@@ -3,7 +3,7 @@ import { Container } from "./styles";
 import Order from "./order/Order";
 import Wishlist from "./wishlist/Wishlist";
 import OrderChange from "./orderchange/OrderChange";
-import QnA from "./QnA/QnA";
+import Bank from "./bank/Bank";
 import EditAccount from "./editAccount/EditAccount";
 import DeleteAccount from "./deleteAccount/DeleteAccount";
 import { instance } from "../../api/api";
@@ -13,6 +13,8 @@ const Account = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [confirmModal, setConfirmModal] = useState(false);
   const [userData, setUserData] = useState([]);
+  const [orderData, setOrderData] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const changeSection = (event) => {
     setSection(event.target.className);
@@ -64,10 +66,10 @@ const Account = () => {
             type="button"
             onClick={changeSection}
           >
-            취소/교환/반품
+            구매확정/취소
           </button>
-          <button className="QnA" type="button" onClick={changeSection}>
-            1:1 문의
+          <button className="bank" type="button" onClick={changeSection}>
+            나의 계좌
           </button>
           <button className="edit-account" type="button" onClick={showModal}>
             정보 수정
@@ -93,7 +95,7 @@ const Account = () => {
           {section === "order" ? <Order /> : null}
           {section === "wishlist" ? <Wishlist /> : null}
           {section === "order-change" ? <OrderChange /> : null}
-          {section === "QnA" ? <QnA /> : null}
+          {section === "bank" ? <Bank /> : null}
         </section>
       </Container>
       {modalOpen && (

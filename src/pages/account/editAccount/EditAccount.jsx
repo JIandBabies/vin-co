@@ -1,7 +1,6 @@
 import { AiOutlineClose } from "react-icons/ai";
 import { MdOutlineCameraAlt } from "react-icons/md";
 import { useEffect, useRef, useState } from "react";
-import { useForm } from "react-hook-form";
 import { Container, UserForm } from "./styles";
 import { instance } from "../../../api/api";
 
@@ -10,7 +9,7 @@ const EditAccount = ({ setModalOpen, userData, setUserData }) => {
   const [displayName, setDisplayName] = useState(userData.displayName);
   const [newPassword, setNewPassword] = useState("");
   const [oldPassword, setOldPassword] = useState("");
-  const [profileImgBase64, setProfileImgBase64] = useState(userData.profileImg);
+  const [profileImgBase64, setProfileImgBase64] = useState("");
   let profile = "";
 
   const closeModal = () => {
@@ -95,7 +94,12 @@ const EditAccount = ({ setModalOpen, userData, setUserData }) => {
         </div>
         <label className="modal-profile">
           <div className="profile">
-            <img src={profileImgBase64} alt="profile-img" />
+            <img
+              src={
+                profileImgBase64 === "" ? userData.profileImg : profileImgBase64
+              }
+              alt="profile-img"
+            />
           </div>
           <span className="camera">
             <MdOutlineCameraAlt />

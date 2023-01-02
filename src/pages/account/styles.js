@@ -8,6 +8,7 @@ const Container = styled.div`
 
   .nav {
     padding-right: 7rem;
+    padding-left: 1rem;
   }
 
   .nav button {
@@ -18,9 +19,13 @@ const Container = styled.div`
     cursor: pointer;
   }
 
+  section {
+    width: 80%;
+  }
+
   .user {
     display: flex;
-    padding: 10% 0;
+    padding: 5% 0;
   }
 
   .user-icon img {
@@ -28,6 +33,7 @@ const Container = styled.div`
     height: 5rem;
     border-radius: 50%;
     cursor: pointer;
+    object-fit: cover;
   }
 
   .user-info {
